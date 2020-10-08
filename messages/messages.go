@@ -7,6 +7,7 @@ import (
 
 func sendMessages(receiver chan string) {
 	// Create a slice of some strings to send.
+	
 	messages := []string{
 		"ping",
 		"pong",
@@ -18,12 +19,13 @@ func sendMessages(receiver chan string) {
 		fmt.Println("sendMessages is sending:", m)
 		receiver <- m
 		
-	}
+	} 
+
 }
 
 func main() {
 	// Create a channel for sending and receiving strings.
-	messages := make(chan string)
+	messages := make(chan string, 3)
 
 	// Start a new goroutine that will send some messages.
 	go sendMessages(messages)
